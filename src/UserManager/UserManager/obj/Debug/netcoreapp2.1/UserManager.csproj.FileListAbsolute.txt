@@ -1,0 +1,14 @@
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\bin\Debug\netcoreapp2.1\UserManager.deps.json
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\bin\Debug\netcoreapp2.1\UserManager.runtimeconfig.json
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\bin\Debug\netcoreapp2.1\UserManager.runtimeconfig.dev.json
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\bin\Debug\netcoreapp2.1\UserManager.dll
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.csproj.CoreCompileInputs.cache
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.RazorAssemblyInfo.cache
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.RazorAssemblyInfo.cs
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.AssemblyInfoInputs.cache
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.AssemblyInfo.cs
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.RazorTargetAssemblyInfo.cache
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\bin\Debug\netcoreapp2.1\UserManager.pdb
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.dll
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.pdb
+C:\Repositories\Osobno\CodeWorkbook\src\UserManager\UserManager\obj\Debug\netcoreapp2.1\UserManager.csprojAssemblyReference.cache
