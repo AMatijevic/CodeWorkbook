@@ -1,6 +1,6 @@
-﻿using TotalRecall.Enums;
+﻿using TotalRecall.Core.Enums;
 
-namespace TotalRecall
+namespace TotalRecall.Core.Entities
 {
     public class Length
     {

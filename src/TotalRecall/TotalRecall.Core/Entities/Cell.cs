@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TotalRecall.Enums;
+using TotalRecall.Core.Enums;
 
-namespace TotalRecall
+namespace TotalRecall.Core.Entities
 {
-    public class Cell
+    public class Cell : BaseEntity
     {
         public string Type { get; protected set; }
 

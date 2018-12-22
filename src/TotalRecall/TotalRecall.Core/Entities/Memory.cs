@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace TotalRecall
+namespace TotalRecall.Core.Entities
 {
     public class Memory : BaseEntity
     {

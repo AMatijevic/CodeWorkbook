@@ -1,4 +1,4 @@
-﻿namespace TotalRecall
+﻿namespace TotalRecall.Core.Entities
 {
     public class Summary : BaseEntity
     {

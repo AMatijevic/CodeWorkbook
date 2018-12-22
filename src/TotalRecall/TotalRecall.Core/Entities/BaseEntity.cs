@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TotalRecall
+namespace TotalRecall.Core.Entities
 {
     public abstract class BaseEntity
     {
