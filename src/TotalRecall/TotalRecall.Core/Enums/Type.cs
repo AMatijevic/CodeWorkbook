@@ -2,10 +2,11 @@
 {
     public enum Type
     {
-        BlogPost,
-        Book,
-        Video,
-        GitRepository,
-        Library
+        None = 0,
+        BlogPost = 1,
+        Book = 2,
+        Video = 3,
+        GitRepository = 4,
+        Library = 5
     }
 }
