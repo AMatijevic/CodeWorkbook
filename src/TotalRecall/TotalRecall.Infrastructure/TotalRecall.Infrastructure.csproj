@@ -8,4 +8,8 @@
     <Folder Include="DataAccess\Database\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TotalRecall.Core\TotalRecall.Core.csproj" />
+  </ItemGroup>
+
 </Project>
