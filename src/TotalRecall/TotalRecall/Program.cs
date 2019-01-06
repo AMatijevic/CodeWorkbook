@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using TotalRecall.Core.Interfaces;
-using TotalRecall.Infrastructure.DataAccess.FileSystem;
+using TotalRecall.Infrastructure.DataAccess.Files;
 
 namespace TotalRecall
 {

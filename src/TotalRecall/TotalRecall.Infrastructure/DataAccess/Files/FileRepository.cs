@@ -2,7 +2,7 @@
 using System.IO;
 using TotalRecall.Core.Interfaces;
 
-namespace TotalRecall.Infrastructure.DataAccess.FileSystem
+namespace TotalRecall.Infrastructure.DataAccess.Files
 {
     public class FileRepository : IFileRepository
     {
