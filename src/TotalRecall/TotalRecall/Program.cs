@@ -1,22 +1,90 @@
-﻿using System;
-using System.Diagnostics;
-using TotalRecall.Core.Interfaces;
-using TotalRecall.Infrastructure.DataAccess.Files;
+﻿using McMaster.Extensions.CommandLineUtils;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 
 namespace TotalRecall
 {
-    class Program
+    //UsingAttributes
+    internal class Program
     {
-        static void Main(string[] args)
+        private static Task<int> Main(string[] args)
         {
-            //Process.Start("C:\\Program Files\\Notepad++\\notepad++.exe", "\"c:\\file name for test.txt\"");
-            //Console.WriteLine("Hello World!");
-            IFileRepository fileRepository = new FileRepository();
-            //When memory is created I create folder for that memory
-            var memoryPath = fileRepository.CreateDirectory("DDD");
-            var cellSummeryPath = fileRepository.CreateFile(memoryPath, "EFCore (and a DDD win)");
-            Process.Start("C:\\Program Files\\Notepad++\\notepad++.exe", $"\"{cellSummeryPath}\"");
-
+            //Very similar to ASP.NET core startup class 
+            return new HostBuilder()
+                //Define configuration file
+                //Define logging
+                .ConfigureLogging((context, builder) => 
+                {
+                    builder.AddConsole();
+                    builder.AddDebug();
+                })
+                //Define your services (DI Container)
+                .ConfigureServices((context, services) => services.AddSingleton<IGreeter, Greeter>())
+                .RunCommandLineApplicationAsync<TotalRecall>(args);
         }
+    }
+
+    [Command(Name = "recall", Description = "Dependency Injection sample project")]
+    public class TotalRecall//Controller
+    {
+        private readonly IGreeter _greeter;
+        private readonly ILogger<TotalRecall> _logger;
+
+        public TotalRecall(IGreeter greeter, ILogger<TotalRecall> logger)
+        {
+            _greeter = greeter;
+            _logger = logger;
+            _logger.LogInformation("Constructed!");
+        }
+
+        [Argument(0, Description = "your name")]
+        private string Name { get; } = "dependency injection";
+
+        [Option("-l|--language", Description = "your desired language")]
+        [AllowedValues("english", "spanish", IgnoreCase = true)]
+        public string Language { get; } = "english";
+
+        private void OnExecute(CommandLineApplication app)
+        {
+            //app.ShowHelp();
+            //app.ShowHint();
+            _greeter.Greet(Name, Language);
+        }
+    }
+
+
+    public class Greeter:IGreeter
+    {
+        private readonly IConsole _console;
+        private readonly ILogger<Greeter> _logger;
+
+        public Greeter(ILogger<Greeter> logger,
+            IConsole console)
+        {
+            _logger = logger;
+            _console = console;
+
+            _logger.LogInformation("Constructed!");
+        }
+
+        public void Greet(string name, string language = "english")
+        {
+            string greeting;
+            switch (language)
+            {
+                case "english": greeting = "Hello {0}"; break;
+                case "spanish": greeting = "Hola {0}"; break;
+                default: throw new InvalidOperationException("validation should have caught this");
+            }
+            _console.WriteLine(greeting, name);
+        }
+    }
+
+    public interface IGreeter
+    {
+        void Greet(string name, string language);
     }
 }
