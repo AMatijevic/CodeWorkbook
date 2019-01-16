@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TotalRecall": {
+      "commandName": "Project",
+      "commandLineArgs": "memory add blogpost Name -t Bla"
+    }
+  }
+}

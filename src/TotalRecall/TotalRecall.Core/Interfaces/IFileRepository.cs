@@ -8,7 +8,7 @@ namespace TotalRecall.Core.Interfaces
 {
     public interface IFileRepository
     {
-        string CreateDirectory(string name, string path = "");
-        string CreateFile(string path, string name);
+        string CreateDirectory(string name);
+        string CreateFile(string path);
     }
 }
