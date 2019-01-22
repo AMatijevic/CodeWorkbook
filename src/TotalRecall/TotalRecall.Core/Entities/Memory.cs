@@ -13,6 +13,8 @@ namespace TotalRecall.Core.Entities
 
         public Type Type { get; protected set; }
 
+        public string Name { get; set; }
+
         //EF Core Many to Many
         private readonly List<Tag> _tags = new List<Tag>();
         public IReadOnlyCollection<Tag> Tags => _tags.AsReadOnly();
