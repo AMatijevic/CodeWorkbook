@@ -1,10 +1,16 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
 using MediatR;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using TotalRecall.Core.Interfaces;
+using TotalRecall.Infrastructure.DataAccess.Database;
 using TotalRecall.Infrastructure.DataAccess.Files;
 
 namespace TotalRecall
@@ -17,6 +23,10 @@ namespace TotalRecall
             //Very similar to ASP.NET core startup class
             return new HostBuilder()
                 //Define configuration file
+                .ConfigureAppConfiguration((context,config) => 
+                {
+                    config.AddJsonFile("appsettings.json", optional: false);
+                })
                 //Define logging
                 .ConfigureLogging((context, builder) =>
                 {
@@ -26,6 +36,7 @@ namespace TotalRecall
                 //Define your services (DI Container)
                 .ConfigureServices((context, services) =>
                 {
+                    services.AddDbContext<RecallDbContext>(options => options.UseSqlite(context.Configuration.GetConnectionString("RecallDb")));
                     //services.AddSingleton<IGreeter, Greeter>();
                     services.AddSingleton<IFileRepository, FileRepository>();
                     services.AddMediatR();

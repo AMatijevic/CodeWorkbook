@@ -9,7 +9,6 @@ namespace TotalRecall.Infrastructure.DataAccess.Database.Mappings
     {
         public void Map(EntityTypeBuilder<Tag> builder)
         {
-            throw new NotImplementedException();
         }
     }
 }

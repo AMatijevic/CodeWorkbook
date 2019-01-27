@@ -13,7 +13,6 @@ namespace TotalRecall.Infrastructure.DataAccess.Database.Mappings
     {
         public void Map(EntityTypeBuilder<Summary> builder)
         {
-            throw new NotImplementedException();
         }
     }
 }

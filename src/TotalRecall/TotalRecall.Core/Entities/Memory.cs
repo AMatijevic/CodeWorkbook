@@ -11,6 +11,13 @@ namespace TotalRecall.Core.Entities
         {
         }
 
+        public Memory(string name, Type type)
+        {
+            Name = name;
+            Type = type;
+            Length = new Length();
+        }
+
         public Type Type { get; protected set; }
 
         public string Name { get; set; }
