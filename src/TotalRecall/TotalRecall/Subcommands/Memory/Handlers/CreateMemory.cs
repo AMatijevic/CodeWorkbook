@@ -1,5 +1,6 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
 using MediatR;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TotalRecall.Infrastructure.DataAccess.Database;
@@ -29,7 +30,12 @@ namespace TotalRecall.Subcommands.Memory.Handlers
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 _console.WriteLine("Create new memory handler");
-                _dbContext.Memories.Add(new Core.Entities.Memory("Name test", Core.Enums.Type.BlogPost));
+                var entity = new Core.Entities.Memory(
+                    "Name test",
+                    Core.Enums.Type.BlogPost,
+                    new List<Core.Entities.Tag> { new Core.Entities.Tag("EfCore2.0"), new Core.Entities.Tag("ManyToManyRelation") });
+
+                _dbContext.Memories.Add(entity);
                 await _dbContext.SaveChangesAsync();
                 return null;
             }

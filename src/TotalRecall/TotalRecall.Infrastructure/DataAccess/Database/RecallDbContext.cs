@@ -31,6 +31,8 @@ namespace TotalRecall.Infrastructure.DataAccess.Database
             modelBuilder.AddMapping(new MemoryMapping());
             modelBuilder.AddMapping(new SummaryMapping());
             modelBuilder.AddMapping(new TagMapping());
+            //Many to many relation in EFCore
+            modelBuilder.AddMapping(new MemoryTagMapping());
         }
 
         public async Task SaveChangesAsync()
