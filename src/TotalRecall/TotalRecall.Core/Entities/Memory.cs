@@ -12,13 +12,13 @@ namespace TotalRecall.Core.Entities
         {
         }
 
-        public Memory(string name, Type type, IEnumerable<Tag> tags)
+        public Memory(string name, Type type, IEnumerable<Tag> tags, string url)
         {
             Name = name;
             Type = type;
             Length = new Length();
-            //AddTag(tags.FirstOrDefault());
             _memoryTags.AddRange(tags.Select(tag => new MemoryTag(this, tag)));
+            Url = url;
         }
 
         public Type Type { get; protected set; }

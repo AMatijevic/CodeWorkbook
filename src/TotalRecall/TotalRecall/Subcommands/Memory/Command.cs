@@ -2,6 +2,7 @@
 using MediatR;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using TotalRecall.Subcommands.Memory.Handlers;
 
@@ -25,9 +26,20 @@ namespace TotalRecall.Subcommands.Memory
         [Required]
         protected string Name { get; }
 
+        private List<string> _tags = new List<string>();
         [Option("-t|--tags")]
         //[Required] tags are required only when we add new memory not when we edit or delete
-        protected List<string> Tags { get; } = new List<string>();
+        protected List<string> Tags {
+            get
+            {
+                var tags = _tags.FirstOrDefault();
+                return tags?.Split(',')?.Select(t => t.Trim()).ToList() ?? new List<string>();
+            }
+            set
+            {
+                _tags = value;
+            }
+        }
     }
 
     [Command(Name = "memory", Description = "work with memories"), 
@@ -38,15 +50,22 @@ namespace TotalRecall.Subcommands.Memory
         [Command(Name = "add", Description = "add new memory")]
         public class AddMemory : BaseCommand
         {
+            [Option("-u|--url")]
+            protected string Url { get; }
+
             public AddMemory(IMediator mediator) : base(mediator) { }
 
             private new async Task OnExecute(CommandLineApplication app, IConsole console)
             {
-                //Fill request for 
-                console.WriteLine($"Selected type: {Type}");
-                console.WriteLine($"memory name: {Name}");
-                console.WriteLine($"tags: {string.Join(',', Tags)}");
-                var response = await _mediator.Send(new CreateMemory.Request());
+                var request = new CreateMemory.Request
+                {
+                    Name = Name,
+                    Type = Type,
+                    Tags = Tags.Select(t => new Core.Entities.Tag(t)).ToList(),
+                    Url = Url
+                    
+                };
+                var response = await _mediator.Send(request);
             }
         }
 
