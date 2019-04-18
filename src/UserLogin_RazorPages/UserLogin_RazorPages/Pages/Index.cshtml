@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page Changed";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>@Model.Date.ToShortDateString()</p>
+    @foreach (var playground in Model.Playgrounds)
+    {
+        <div>
+            <p>@playground.Name</p>
+            <p>@playground?.Users?.Count</p>
+            <p>@playground.StartTime</p>
+
+            <a asp-page="/Playground/Index" asp-page-handler="Assign" asp-route-id="@playground.Id">I want to play</a>
+            @* This is visible only if user is already assign for that playeground and login  *@
+            @*<a asp-page="/Index" asp-page-handler="UnAssign" asp-route-id="@playground.PlaygroundName">I don't want to play</a>*@
+        </div>
+    }
+</div>

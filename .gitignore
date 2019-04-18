@@ -13,6 +13,9 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Mono auto generated files
+mono_crash.*
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -206,6 +209,8 @@ BundleArtifacts/
 Package.StoreAssociation.xml
 _pkginfo.txt
 *.appx
+*.appxbundle
+*.appxupload
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -291,10 +296,6 @@ paket-files/
 # FAKE - F# Make
 .fake/
 
-# JetBrains Rider
-.idea/
-*.sln.iml
-
 # CodeRush personal settings
 .cr/personal
 
@@ -338,3 +339,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Backup folder for Package Reference Convert tool in Visual Studio 2017
+MigrationBackup/

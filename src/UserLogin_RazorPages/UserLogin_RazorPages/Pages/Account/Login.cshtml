@@ -1,0 +1,16 @@
+﻿@page
+@model UserLogin_RazorPages.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Login</h1>
+
+<form method="post" asp-page="/Account/Login" >
+    <input hidden asp-for="Input.ReturnUrl"/>
+    <input asp-for="Input.Username" /><br />
+    <input asp-for="Input.Password" /><br />
+    <button>Submit</button>
+</form>
+
