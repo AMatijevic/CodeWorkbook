@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WhoWantsToPlay.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Claims;
+using WhoWantsToPlay.DomainModel.Entities;
 
 namespace WhoWantsToPlay
 {
@@ -39,15 +36,15 @@ namespace WhoWantsToPlay
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<AppUser>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultUI(UIFramework.Bootstrap4);
+                
 
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
                 googleOptions.ClientId = "674807929415-pu7r6rqmq1as8fcgpiss9l7ulohmd56t.apps.googleusercontent.com";//Configuration["Authentication:Facebook:AppId"];
                 googleOptions.ClientSecret = "oGYFg1DPioHJZOO1ye05WvJs"; //Configuration["Authentication:Facebook:AppSecret"];
-                //googleOptions.UserInformationEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
                 googleOptions.Scope.Add("profile");
                 googleOptions.Events.OnCreatingTicket = (context) =>
                 {

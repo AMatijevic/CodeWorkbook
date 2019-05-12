@@ -4,7 +4,17 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+        <div>
+            <p>Trsat</p>
+            <p>0</p>
+            <p>17:00</p>
+
+            <a asp-page="/Play/Index" asp-page-handler="Assign" asp-route-playgroundId="1" asp-route-date="@DateTime.Now">I want to play</a>
+            @* This is visible only if user is already assign for that playeground and login  *@
+            @*<a asp-page="/Index" asp-page-handler="UnAssign" asp-route-id="@playground.PlaygroundName">I don't want to play</a>*@
+        </div>
+    </div>
